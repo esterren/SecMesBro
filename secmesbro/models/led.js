@@ -6,12 +6,12 @@ var Led = {
     {
       id: '1',
       color: 'red',
-      status: 'off'
+      state: 'off'
     },
     {
         id: '2',
         color: 'yellow',
-        status: 'on'
+        state: 'on'
     }
   ],
   last_id: 1,

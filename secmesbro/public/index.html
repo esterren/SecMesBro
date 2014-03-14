@@ -2,16 +2,43 @@
 <html>
 <head>
     <title>Secure Message Broker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css">
+    <script src="javascripts/libs/jquery/jquery-2.1.0.min.js"></script>
+    <script src="javascripts/libs/bootstrap/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io.connect('http://localhost');
-        socket.on('message', function (data) {
-            console.log(data);
-            socket.emit('my other event', { my: 'data' });
-        });
-    </script>
+    <script src="javascripts/index.js"></script>
+
 </head>
 <body>
-<h1>Secure Message Broker</h1>
+
+<div class="container" role="main">
+    <div class="jumbotron">
+        <h1>Secure Message Broker</h1><small>by Renato Estermann</small>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="hidden" id="template-led">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>LED</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group btn-group-lg">
+                            <button type="button" class="btn btn-primary" id="led-temp-on">On</button>
+                            <button type="button" class="btn btn-default" id="led-temp-off">Off</button>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
 </body>
 </html>
