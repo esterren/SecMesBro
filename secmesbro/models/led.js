@@ -12,6 +12,11 @@ var Led = {
         id: '2',
         color: 'yellow',
         state: 'on'
+    },
+    {
+        id: '3',
+        color: 'green',
+        state: 'on'
     }
   ],
   last_id: 1,
@@ -48,7 +53,7 @@ var Led = {
 
   update: function(data) {
     console.log('updating with ' + data);
-    for (var i = 0; i < this.taks.length; i++) {
+    for (var i = 0; i < this.leds.length; i++) {
       if (this.leds[i].id == data['id']) {
         Led.merge(this.leds[i], data);
         return this.leds[i];
