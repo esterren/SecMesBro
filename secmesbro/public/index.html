@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap-switch.min.css">
     <script src="javascripts/libs/jquery/jquery-2.1.0.min.js"></script>
     <script src="javascripts/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="javascripts/libs/bootstrap/bootstrap-switch.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="javascripts/index.js"></script>
 
@@ -26,8 +28,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="btn-group btn-group-lg">
-                            <button type="button" class="btn btn-primary" id="led-temp-on">On</button>
-                            <button type="button" class="btn btn-default" id="led-temp-off">Off</button>
+
+                            <input type="checkbox" name="led-switch-temp" data-on-color="success" data-off-color="danger">
                         </div>
                     </div>
                 </div>

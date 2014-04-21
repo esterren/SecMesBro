@@ -1,0 +1,16 @@
+{
+    "name": "secmesbro",
+    "version": "0.0.1",
+    "author": "Renato Estermann",
+    "description": "a mqtt to websocket message broker",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "3.5.1",
+        "socket.io": "0.9.16"
+    },
+    "engines": {
+        "node": ">=v0.10.25"
+    }
+}

@@ -5,22 +5,19 @@
 
 
 $().ready(function(){
+
+    // TODO handle disconnect
     socket = io.connect('http://localhost');
     socket.on('init', function (data) {
         console.log(data);
         $('[id^=led-]').remove();
         generateLEDRows(data);
-        //socket.emit('my other event', { my: 'data' });
     });
 
 
     socket.on('update', function (data) {
-
-
         console.log(data);
-
         setLedSwitchState(data);
-
     });
 
 
@@ -42,19 +39,19 @@ function generateLEDRows(obj){
         template.find(':checkbox').attr('id', swid);
 
 
-//        if(value.state.toUpperCase() =='ON'){
-//            $('#'+swid).bootstrapSwitch('state',true);
-//        } else if(value.state.toUpperCase() == 'OFF'){
-//            $('#'+swid).bootstrapSwitch('state',false);
-//        }
-//        if(value.state.toUpperCase() == 'ON'){
-//            template.find('#led-temp-on').addClass('active');
-//        }else if (value.state.toUpperCase() =='OFF'){
-//            template.find('#led-temp-off').addClass('active');
-//
-//        }
-//        template.find('#led-temp-on').attr('id','led-'+value.id+'-on' );
-//        template.find('#led-temp-off').attr('id','led-'+value.id+'-off' );
+        if(value.state.toUpperCase() =='ON'){
+            $('#'+swid).bootstrapSwitch('state',true);
+        } else if(value.state.toUpperCase() == 'OFF'){
+            $('#'+swid).bootstrapSwitch('state',false);
+        }
+        if(value.state.toUpperCase() == 'ON'){
+            template.find('#led-temp-on').addClass('active');
+        }else if (value.state.toUpperCase() =='OFF'){
+            template.find('#led-temp-off').addClass('active');
+
+        }
+        template.find('#led-temp-on').attr('id','led-'+value.id+'-on' );
+        template.find('#led-temp-off').attr('id','led-'+value.id+'-off' );
 
         $('#template-led').parent().append(template);
 
