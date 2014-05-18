@@ -15,6 +15,11 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+//app.use(express.basicAuth('rest', 'rest1234'));
+// Authenticator
+app.use(express.basicAuth(function(user, pass) {
+    return user === 'rest' && pass === 'rest1234';
+}));
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -22,6 +27,13 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+/*// Authenticator
+app.use(express.basicAuth(function(user, pass, callback) {
+    var result = (user === 'rest' && pass === 'rest1234');
+    callback(null *//* error *//*, result);
+}));*/
 
 // development only
 if ('development' == app.get('env')) {
