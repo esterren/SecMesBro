@@ -3,14 +3,19 @@
 <head>
     <title>Secure Message Broker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="stylesheets/bootstrap-switch.min.css">
-    <script src="javascripts/libs/jquery/jquery-2.1.0.min.js"></script>
-    <script src="javascripts/libs/bootstrap/bootstrap.min.js"></script>
-    <script src="javascripts/libs/bootstrap/bootstrap-switch.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="javascripts/index.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-switch.min.css">
+    <script src="js/libs/jquery/jquery-2.1.0.min.js"></script>
+    <script src="js/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="js/libs/bootstrap/bootstrap-switch.min.js"></script>
+    <!--<script src="/socket.io/socket.io.js"></script>-->
+    <!--<script src="javascripts/index.js"></script>-->
+    <!--<script src="javascripts/init.js"></script>-->
+<!--    <script src="javascripts/mows.js"></script>
+    <script src="javascripts/main.js"></script>-->
+    <script src="js/bundle.js"></script>
+    <!--<script src="javascripts/mqtt.js"></script>-->
 
 </head>
 <body>
@@ -19,17 +24,157 @@
     <div class="jumbotron">
         <h1>Secure Message Broker</h1><small>by Renato Estermann</small>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="hidden" id="template-led">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>LED</h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="btn-group btn-group-lg">
 
-                            <input type="checkbox" name="led-switch-temp" data-on-color="success" data-off-color="danger">
+    <div id="alert-1" class="alert alert-danger alert-dismissable hidden" >
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div id="alert-1-text"></div>
+    </div>
+    <div id="alert-2" class="alert alert-success alert-dismissable hidden" >
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div id="alert-2-text"></div>
+    </div>
+    <div id="alert-3" class="alert alert-danger alert-dismissable hidden" >
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div id="alert-3-text"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="led-all">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Alle LEDs</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <!--<div class="btn-group btn-group-lg">-->
+                            <button type="button" id="led-all-on" class="btn btn-default">ON</button>
+                            <button type="button" id="led-all-off" class="btn btn-default">OFF</button>
+                        <!--</div>-->
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="led-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>LED 1</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-lg">
+                            <input type="checkbox" id="led-switch-1" data-on-color="success" data-off-color="danger">
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="led-2">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>LED 2</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-lg">
+                            <input type="checkbox" id="led-switch-2" data-on-color="success" data-off-color="danger">
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="led-3">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>LED 3</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-lg">
+                            <input type="checkbox" id="led-switch-3" data-on-color="success" data-off-color="danger">
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="led-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>LED 4</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-lg">
+                            <input type="checkbox" id="led-switch-4" data-on-color="success" data-off-color="danger">
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="led-5">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>LED 5</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-lg">
+                            <input type="checkbox" id="led-switch-5" data-on-color="success" data-off-color="danger">
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="led-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>LED 6</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-lg">
+                            <input type="checkbox" id="led-switch-6" data-on-color="success" data-off-color="danger">
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="buzzer-1">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Summer:</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>permanent</h4>
+                            </div>
+                        <div class="col-sm-6">
+                            <div class="btn-group btn-group-lg">
+                                <input type="checkbox" id="buzzer-switch-1" data-on-color="success" data-off-color="danger">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>terminiert</h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <input type="number" id="buzzer-input-1" class="form-control" min="1" max="30" step="1" placeholder="5 sec.">
+                                    <span class="input-group-btn">
+                                        <button id="buzzer-btn-1" class="btn btn-default" type="button">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+            <div id="button-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Schalterfunktion</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-lg">
+                            <input type="checkbox" id="button-switch-1" data-on-color="success" data-off-color="danger" data-on-text="AKTIV" data-off-text="INAKTIV">
                         </div>
                     </div>
                 </div>
