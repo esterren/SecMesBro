@@ -62,7 +62,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.basicAuth(function(user, pass) {
     return user === 'rest' && pass === 'rest1234';
 }));
-//app.use(express.favicon());
+
 app.use(express.logger('dev'));
 //app.use(express.json());
 //app.use(express.urlencoded());
