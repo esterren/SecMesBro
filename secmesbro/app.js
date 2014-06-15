@@ -6,7 +6,6 @@ var SECURE_KEY = __dirname + '/certs/server-key.pem';
 var SECURE_CERT = __dirname + '/certs/server-cert.pem';
 
 var express = require('express'),
-//    http = require('http'),
     https = require('https'),
     fs = require('fs'),
     path = require('path'),
@@ -50,24 +49,14 @@ var    mqttServ = new mosca.Server(moscaSettings);
 //var db = new mosca.persistence.Mongo({  url: 'mongodb://localhost:27017/mqtt' }, function(){db.wire(mqttServ);});
 
 
-//var routes = require('./routes');
-
-
-
 // all environments
 app.set('port', process.env.PORT || 3000);
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
 // Authenticator
 app.use(express.basicAuth(function(user, pass) {
     return user === 'rest' && pass === 'rest1234';
 }));
 
 app.use(express.logger('dev'));
-//app.use(express.json());
-//app.use(express.urlencoded());
-//app.use(express.methodOverride());
-//app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -81,15 +70,6 @@ app.use(express.basicAuth(function(user, pass, callback) {
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
-//app.get('/', routes.index);
-//app.get('/users', user.list);
-
-//load models
-//var models = require('./models')(app);
-
-// load routes
-//var routes = require('./routes')(app);
 
 
 var httpsServer = https.createServer(https_options,app);

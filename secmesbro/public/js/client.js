@@ -9,16 +9,6 @@ var mows   = require('mows'),
     bs = require('./libs/bootstrap/bootstrap-switch.min'),
     client = mows.createClient(3000,'wss://localhost');
 
-/*var basetopic = 'RPi1/berryclip/',
-    ledtopic = 'leds/',
-    buzzertopic = 'buzzers/',
-    buttontopic = 'buttons/',
-    ledstatuspattern = new RegExp(".*"+ledtopic.replace('/',"\\/")+'[0-9]+\/.*',"g"),
-    buzzerstatuspattern = new RegExp(".*"+buzzertopic.replace('/',"\\/")+'[0-9]+\/.*',"g"),
-    buttonstatuspattern = new RegExp(".*"+buttontopic.replace('/',"\\/")+'[0-9]+\/.*',"g");*/
-
-// pass an optional 'ws://localhost:port' here.
-
 client.subscribe('#');
 
 client.on('message', function (topic, message) {
@@ -161,13 +151,3 @@ function showAlert(id,text,fade){
         });
     }
 }
-
-/*
-function showInfo(text){
-    $('#alert-2-text').text(text);
-    $('#alert-2').removeClass('hidden').fadeIn(function(){
-        window.setTimeout(function () {
-            $("#alert-2").fadeOut()
-        }, 3000);
-    });
-}*/
